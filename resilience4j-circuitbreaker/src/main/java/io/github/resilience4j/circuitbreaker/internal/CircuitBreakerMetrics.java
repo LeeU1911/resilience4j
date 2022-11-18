@@ -27,6 +27,7 @@ import io.github.resilience4j.core.metrics.SlidingTimeWindowMetrics;
 import io.github.resilience4j.core.metrics.Snapshot;
 
 import java.time.Clock;
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.LongAdder;
 
@@ -229,6 +230,14 @@ class CircuitBreakerMetrics implements CircuitBreaker.Metrics {
     @Override
     public long getNumberOfNotPermittedCalls() {
         return this.numberOfNotPermittedCalls.sum();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public Duration getAverageDuration() {
+        return this.metrics.getSnapshot().getAverageDuration();
     }
 
     enum Result {

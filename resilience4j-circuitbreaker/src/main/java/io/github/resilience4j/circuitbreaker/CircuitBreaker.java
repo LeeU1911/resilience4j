@@ -1009,7 +1009,7 @@ public interface CircuitBreaker {
         /**
          * Returns the current total number of buffered calls in the ring buffer.
          *
-         * @return he current total number of buffered calls in the ring buffer
+         * @return the current total number of buffered calls in the ring buffer
          */
         int getNumberOfBufferedCalls();
 
@@ -1037,6 +1037,13 @@ public interface CircuitBreaker {
          * @return the current number of successful buffered calls in the ring buffer
          */
         int getNumberOfSuccessfulCalls();
+
+        /**
+         * Returns the current average duration of calls
+         *
+         * @return the current average duration of calls
+         */
+        Duration getAverageDuration();
     }
 
     /**
